@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>THRYLOS Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+<div class="app-wrap">
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">T</div>
+      <div class="brand-text">
+        <div class="app-name">THRYLOS</div>
+        <div class="app-sub">Smart To‑Do</div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div id="userEmail" class="user-email"></div>
+      <button class="btn btn-ghost" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="panel add-panel">
+      <h3>Add Task</h3>
+      <input id="title" placeholder="Task Title">
+      <input id="time" type="datetime-local">
+      <button class="btn btn-primary" onclick="addTask()">Add Task</button>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="panel-head">
+        <h3>Your Tasks</h3>
+        <div class="small">Tasks are auto-synced and reminders are sent before due time.</div>
+      </div>
+      <ul id="taskList"></ul>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  checkLogin();
+</script>
+</body>
+</html>

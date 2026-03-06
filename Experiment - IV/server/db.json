@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": "015b48e5-421c-478f-a6c2-162258e39b15",
+      "email": "misterutsav@gmail.com",
+      "password": "Utsav@8055"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "601748df-2cf2-4f77-af74-777d9a1d7964",
+      "title": "Submit Assignment",
+      "datetime": "2026-03-05T09:55:00.000Z",
+      "email": "misterutsav@gmail.com",
+      "username": "misterutsav@gmail.com",
+      "reminderSent": true,
+      "completed": false
+    }
+  ]
+}

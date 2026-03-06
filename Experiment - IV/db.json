@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": "fcd9554d-5aa6-43fe-a5f9-9431ae883834",
+      "email": "misterutsav@gmail.com",
+      "password": "123123"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "27fcb6af-9086-49b1-8072-2fb922548052",
+      "title": "Come to college",
+      "datetime": "2026-02-20T07:04:00.000Z",
+      "email": "misterutsav@gmail.com",
+      "username": "misterutsav@gmail.com",
+      "reminderSent": false,
+      "completed": true
+    },
+    {
+      "id": "f7c4e5c0-7725-4c11-bc86-2ac49bc4f9b5",
+      "title": "Read Web Dev",
+      "datetime": "2026-02-20T07:10:00.000Z",
+      "email": "misterutsav@gmail.com",
+      "username": "misterutsav@gmail.com",
+      "reminderSent": true,
+      "completed": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>THRYLOS — Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="auth-body">
+  <div class="auth-container">
+    <img src="/thrylosbg.png" alt="THRYLOS Logo" style="width:80px;margin-bottom:12px">
+    <h1 style="margin:6px 0 4px">THRYLOS</h1>
+
+    <input id="email" placeholder="Email" autocomplete="email">
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+    <div style="display:flex;gap:10px;margin-top:8px">
+
+      <button class="btn btn-ghost" style="flex:1" onclick="login()">Log in</button>
+            <button class="btn btn-primary" style="flex:1" onclick="signup()">Sign up</button>
+    </div>
+
+    <p id="msg" style="margin-top:12px;color:#ffb"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
