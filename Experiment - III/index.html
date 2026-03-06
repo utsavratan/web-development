@@ -1,0 +1,55 @@
+<!--
+Project Title: IPL Premium Responsive Quiz
+Student Name: UTSAV RATAN
+Date: 12 February 2026
+Description: Fully responsive IPL quiz with timer, best score, and premium UI.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Premium Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+    <div class="quiz-box">
+
+        <div class="top-bar">
+            <h1>🏏 IPL Ultimate Quiz</h1>
+            <div class="score-board">
+                <span id="liveScore">Score: 0</span>
+                <span id="bestScore">Best: 0</span>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="meta-info">
+            <span id="questionCount"></span>
+            <span id="timer">⏱ 15</span>
+        </div>
+
+        <h2 id="question"></h2>
+
+        <div id="options" class="options"></div>
+
+        <button id="nextBtn" disabled>Next</button>
+
+        <div id="resultSection" class="result hidden">
+            <h2 id="finalScore"></h2>
+            <p id="analysis"></p>
+            <button id="restartBtn">Restart Quiz</button>
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

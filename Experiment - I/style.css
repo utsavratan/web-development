@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0e0e0e;
+    color: #f2f2f2;
+    margin: 0;
+}
+header {
+    background: #000;
+    text-align: center;
+    padding: 40px 20px;
+}
+header h1 {
+    color: cyan;
+}
+header button {
+    background: cyan;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+nav {
+    background: #111;
+    padding: 12px;
+    text-align: center;
+}
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 15px;
+}
+nav a:hover {
+    color: cyan;
+}
+section {
+    background: #151515;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #222;
+}
+.list li {
+    background: #1f1f1f;
+    margin: 8px 0;
+    padding: 8px;
+    border-left: 4px solid cyan;
+}
+.project {
+    background: #1b1b1b;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 10px;
+}
+a {
+    color: cyan;
+}
+a:hover{
+    text-decoration : underline;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+input, textarea {
+    background: #0f0f0f;
+    color: white;
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 8px 0;
+}
+form button {
+    background: cyan;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+footer {
+    background: #000;
+    text-align: center;
+    padding: 15px;
+    color: grey;
+}

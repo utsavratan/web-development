@@ -1,0 +1,132 @@
+<!-- 
+Project: Personal Portfolio Website  
+Name: Utsav Ratan  
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Utsav Ratan | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Utsav Ratan</h1>
+    <p>Computer Science Student | Web Developer | Tech Enthusiast</p>
+    <button onclick="welcomeAlert()">Say Hi</button>
+</header>
+<nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+</nav>
+<section id="about">
+    <h2>About Me</h2>
+    <p>
+        Hello! My name is <strong>Utsav Ratan</strong>. I am a Computer Science student who is
+        passionate about technology, web development, and building real-world projects.
+    </p>
+    <p>
+        I enjoy learning new programming languages, creating websites, and exploring
+        how software can solve everyday problems.
+    </p>
+</section>
+<section id="education">
+    <h2>Education</h2>
+    <table>
+        <tr>
+            <th>Course</th>
+            <th>Institute</th>
+            <th>Year</th>
+        </tr>
+        <tr>
+            <td>B.Tech Computer Science</td>
+            <td>K.R. Mangalam University</td>
+            <td>2024 - 2028</td>
+        </tr>
+        <tr>
+            <td>Schooling</td>
+            <td>St. Xavier's Jr./Sr. School</td>
+            <td>Completed</td>
+        </tr>
+    </table>
+</section>
+<section id="skills">
+    <h2>Skills</h2>
+    <h3>Programming Languages</h3>
+    <ul class="list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>C++</li>
+        <li>TypeScript</li>
+    </ul>
+    <h3>Tools & Technologies</h3>
+    <ul class="list">
+        <li>Git & GitHub</li>
+        <li>React</li>
+        <li>Firebase</li>
+        <li>Supabase</li>
+    </ul>
+</section>
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+        <h3>Thrylos Verification Platform</h3>
+        <p>A verification Platform for certificates and documents showing verified or fake status.</p>
+    </div>
+    <div class="project">
+        <h3>EduTrack</h3>
+        <p>A school management system that includes student dashboard, teacher panel, attendance tracking, results, and admin features.</p>
+    </div>
+    <div class="project">
+        <h3>Thrylos Esports Platform</h3>
+        <p>A gaming and esports platform with tournament management, UPI payments, admin dashboard, and real-time database.</p>
+    </div>
+    <div class="project">
+        <h3>Portfolio Website</h3>
+        <p>A personal website created to showcase my skills, projects, and achievements.</p>
+    </div>
+</section>
+<section id="experience">
+    <h2>Experience</h2>
+    <h3>Software Development Intern - Essentia.dev</h3>
+    <p>
+        Worked on web development tasks, improved UI/UX of projects, and contributed to
+        real-world development workflows.
+    </p>
+    <ul class="list">
+        <li>Worked with frontend technologies</li>
+        <li>Improved existing website designs</li>
+        <li>Learned teamwork and professional development</li>
+    </ul>
+</section>
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: utsav@thrylos.in</p>
+    <p>Phone: 9871831555</p>
+    <p>GitHub:
+        <a href="https://github.com/utsavratan" target="_blank">github.com/utsavratan</a>
+    </p>
+    <p>LinkedIn:
+        <a href="https://linkedin.com/in/misterutsav" target="_blank">linkedin.com/in/misterutsav</a>
+    </p>
+    <h3>Quick Message</h3>
+    <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+    <p id="msg"></p>
+</section>
+<footer>
+    <p>© 2026 Utsav Ratan | All Rights Reserved</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
