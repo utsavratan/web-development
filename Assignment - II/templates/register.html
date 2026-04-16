@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Register for an Event</h1>
+    <p>Fill in your details below to secure your spot</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container form-container">
+    <div class="form-card">
+      <div class="form-card-header">
+        <span class="form-icon">🎟️</span>
+        <h2>Event Registration</h2>
+        <p>All fields marked <span class="req">*</span> are required</p>
+      </div>
+
+      <form id="regForm" action="{{ url_for('register') }}" method="POST" novalidate>
+
+        <div class="form-group">
+          <label for="full_name">Full Name <span class="req">*</span></label>
+          <input type="text" id="full_name" name="full_name" placeholder="e.g. Arjun Sharma" autocomplete="name" />
+          <span class="field-error" id="err_name"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@college.edu" autocomplete="email" />
+            <span class="field-error" id="err_email"></span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit number" autocomplete="tel" />
+            <span class="field-error" id="err_phone"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="event_id">Select Event <span class="req">*</span></label>
+            <select id="event_id" name="event_id">
+              <option value="">— Choose an event —</option>
+              {% for event in events %}
+              <option value="{{ event.id }}" {% if preselected and preselected|int == event.id %}selected{% endif %}>
+                {{ event.name }} ({{ event.date }})
+              </option>
+              {% endfor %}
+            </select>
+            <span class="field-error" id="err_event"></span>
+          </div>
+          <div class="form-group">
+            <label for="tickets">Number of Tickets <span class="req">*</span></label>
+            <input type="number" id="tickets" name="tickets" min="1" max="10" value="1" />
+            <span class="field-error" id="err_tickets"></span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+          <span id="btnText">Confirm Registration 🎉</span>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Info sidebar -->
+    <div class="form-info">
+      <h3>📌 Important Info</h3>
+      <ul>
+        <li>Registration is free for all campus events.</li>
+        <li>You'll receive confirmation on your email.</li>
+        <li>Carry your student ID to the event.</li>
+        <li>Tickets are non-transferable.</li>
+        <li>Max 10 tickets per registration.</li>
+      </ul>
+      <div class="info-events-list">
+        <h4>Upcoming Events</h4>
+        {% for event in events[:4] %}
+        <div class="mini-event">
+          <span class="mini-dot"></span>
+          <div>
+            <strong>{{ event.name }}</strong>
+            <small>{{ event.date }} · {{ event.venue }}</small>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

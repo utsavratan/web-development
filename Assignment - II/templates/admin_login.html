@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="section">
+  <div class="container">
+    <div class="login-card">
+      <div class="login-icon">🔐</div>
+      <h2>Admin Login</h2>
+      <p>Enter the admin password to access the control panel</p>
+      <form action="{{ url_for('admin') }}" method="POST" id="loginForm">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter admin password" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Login →</button>
+        <p class="login-hint">Hint: <code>admin123</code></p>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

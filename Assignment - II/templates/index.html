@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🎓 Campus Events Portal</div>
+    <h1 class="hero-title">
+      Discover.<br>
+      <span class="accent">Register.</span><br>
+      Celebrate.
+    </h1>
+    <p class="hero-sub">
+      Find and join the best events happening on campus — from tech fests to cultural nights, sports days to summits.
+    </p>
+    <div class="hero-actions">
+      <a href="{{ url_for('event_list') }}" class="btn btn-primary">Browse Events →</a>
+      <a href="{{ url_for('register') }}" class="btn btn-outline">Register Now</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">{{ total_events }}+</span><span class="stat-label">Events</span></div>
+      <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Attendees</span></div>
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Categories</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="float-card fc1">🎵 Music Fest Live</div>
+      <div class="float-card fc2">💻 TechFest 2025</div>
+      <div class="float-card fc3">🎨 Art & Design Expo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED EVENTS ── -->
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Featured Events</h2>
+      <a href="{{ url_for('event_list') }}" class="see-all">See all events →</a>
+    </div>
+    <div class="events-grid">
+      {% for event in featured_events %}
+      <article class="event-card">
+        <div class="card-img-wrap">
+          <img src="{{ event.image }}" alt="{{ event.name }}" class="card-img" loading="lazy" />
+          <span class="card-cat">{{ event.category }}</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{ event.name }}</h3>
+          <div class="card-meta">
+            <span>📅 {{ event.date }}</span>
+            <span>⏰ {{ event.time }}</span>
+          </div>
+          <div class="card-meta">
+            <span>📍 {{ event.venue }}</span>
+          </div>
+          <p class="card-desc">{{ event.description[:100] }}…</p>
+          <div class="card-footer">
+            <span class="rsvp-badge">👥 {{ event.rsvp }} going</span>
+            <a href="{{ url_for('register') }}?event_id={{ event.id }}" class="btn btn-sm">Register</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section how-section">
+  <div class="container">
+    <div class="section-header center">
+      <h2>How It Works</h2>
+      <p>Three simple steps to join any event</p>
+    </div>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">🔍</div>
+        <h3>Browse Events</h3>
+        <p>Explore upcoming events by category, date, or search by name.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">📝</div>
+        <h3>Fill the Form</h3>
+        <p>Enter your details and select how many tickets you need.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">🎉</div>
+        <h3>You're In!</h3>
+        <p>Get a confirmation and show up on the day. Simple as that!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to join the fun?</h2>
+    <p>Register for an event today and be part of something amazing.</p>
+    <a href="{{ url_for('event_list') }}" class="btn btn-primary btn-lg">Explore All Events</a>
+  </div>
+</section>
+
+{% endblock %}

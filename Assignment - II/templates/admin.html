@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero page-hero--admin">
+  <div class="container">
+    <div class="admin-hero-row">
+      <div>
+        <h1>⚙️ Admin Panel</h1>
+        <p>Manage all events — add, edit, delete, and view registrations</p>
+      </div>
+      <a href="{{ url_for('admin_logout') }}" class="btn btn-outline">Logout</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Stats Row -->
+    <div class="admin-stats">
+      <div class="admin-stat">
+        <span class="astat-num">{{ events|length }}</span>
+        <span class="astat-label">Total Events</span>
+      </div>
+      <div class="admin-stat">
+        <span class="astat-num">{{ registrations|length }}</span>
+        <span class="astat-label">Registrations</span>
+      </div>
+      <div class="admin-stat">
+        <span class="astat-num">{{ events|sum(attribute='rsvp') }}</span>
+        <span class="astat-label">Total RSVPs</span>
+      </div>
+    </div>
+
+    <!-- Add Event Form -->
+    <div class="admin-section">
+      <h2 class="admin-sec-title">➕ Add New Event</h2>
+      <form action="{{ url_for('admin_add') }}" method="POST" class="admin-form" id="addEventForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Event Name *</label>
+            <input type="text" name="name" placeholder="e.g. Annual Coding Marathon" required />
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select name="category">
+              <option>Technology</option><option>Cultural</option><option>Sports</option>
+              <option>Arts</option><option>Music</option><option>Business</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date *</label>
+            <input type="date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label>Time</label>
+            <input type="text" name="time" placeholder="e.g. 10:00 AM" />
+          </div>
+          <div class="form-group">
+            <label>Venue *</label>
+            <input type="text" name="venue" placeholder="e.g. Auditorium Block B" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" rows="3" placeholder="Brief description of the event…"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Image URL</label>
+          <input type="url" name="image" placeholder="https://images.unsplash.com/…" />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Event</button>
+      </form>
+    </div>
+
+    <!-- Events Table -->
+    <div class="admin-section">
+      <h2 class="admin-sec-title">📋 All Events</h2>
+      <div class="table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Name</th><th>Category</th><th>Date</th><th>Venue</th><th>RSVPs</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for event in events %}
+            <tr>
+              <td>{{ event.id }}</td>
+              <td><strong>{{ event.name }}</strong></td>
+              <td><span class="cat-tag">{{ event.category }}</span></td>
+              <td>{{ event.date }}</td>
+              <td>{{ event.venue }}</td>
+              <td><span class="rsvp-num">{{ event.rsvp }}</span></td>
+              <td class="action-btns">
+                <a href="{{ url_for('admin_edit', event_id=event.id) }}" class="btn btn-sm btn-edit">Edit</a>
+                <a href="{{ url_for('admin_delete', event_id=event.id) }}"
+                   class="btn btn-sm btn-delete"
+                   onclick="return confirm('Delete {{ event.name }}?')">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Registrations Table -->
+    {% if registrations %}
+    <div class="admin-section">
+      <h2 class="admin-sec-title">📩 Recent Registrations</h2>
+      <div class="table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Name</th><th>Email</th><th>Phone</th><th>Event ID</th><th>Tickets</th><th>Registered At</th></tr>
+          </thead>
+          <tbody>
+            {% for r in registrations %}
+            <tr>
+              <td>{{ r.name }}</td>
+              <td>{{ r.email }}</td>
+              <td>{{ r.phone }}</td>
+              <td>{{ r.event_id }}</td>
+              <td>{{ r.tickets }}</td>
+              <td>{{ r.registered_at }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}

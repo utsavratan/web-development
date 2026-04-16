@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>All Events</h1>
+    <p>Browse, filter, and find the event that's right for you</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Search + Filter Bar -->
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="liveSearch" placeholder="Search events…" value="{{ search }}" class="search-input" />
+      </div>
+      <div class="cat-filters">
+        {% for cat in categories %}
+        <a href="{{ url_for('event_list') }}?category={{ cat }}&search={{ search }}"
+           class="cat-btn {% if cat == selected_category %}active{% endif %}">
+          {{ cat }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Results count -->
+    <p class="results-count" id="resultsCount">Showing <strong>{{ events|length }}</strong> event(s)</p>
+
+    <!-- Events Grid -->
+    {% if events %}
+    <div class="events-grid" id="eventsGrid">
+      {% for event in events %}
+      <article class="event-card" data-name="{{ event.name|lower }}" data-desc="{{ event.description|lower }}">
+        <div class="card-img-wrap">
+          <img src="{{ event.image }}" alt="{{ event.name }}" class="card-img" loading="lazy" />
+          <span class="card-cat">{{ event.category }}</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{ event.name }}</h3>
+          <div class="card-meta">
+            <span>📅 {{ event.date }}</span>
+            <span>⏰ {{ event.time }}</span>
+          </div>
+          <div class="card-meta">
+            <span>📍 {{ event.venue }}</span>
+          </div>
+          <p class="card-desc">{{ event.description[:120] }}…</p>
+          <div class="card-footer">
+            <span class="rsvp-badge">👥 {{ event.rsvp }} going</span>
+            <a href="{{ url_for('register') }}?event_id={{ event.id }}" class="btn btn-sm">Register</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-results">
+      <p>😕 No events found. <a href="{{ url_for('event_list') }}">Clear filters</a></p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}
