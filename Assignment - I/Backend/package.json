@@ -1,0 +1,23 @@
+{
+  "name": "dynamic-todo-list-backend",
+  "version": "1.0.0",
+  "description": "Backend API for the Dynamic To-Do List assignment",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "todo",
+    "express",
+    "sqlite"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^4.22.1",
+    "sqlite3": "^5.1.7"
+  },
+  "author": "",
+  "type": "commonjs"
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My To-Do List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="todo-app">
+      <div class="hero">
+        <p class="eyebrow">Database-backed task manager</p>
+        <h1>My To-Do List</h1>
+        <p class="subtitle">Create, update, filter, and persist your tasks with a responsive CRUD interface.</p>
+      </div>
+
+      <section class="panel form-panel">
+        <form id="taskForm" class="task-form">
+          <div class="field-group title-group">
+            <label for="taskTitle">Task title</label>
+            <input id="taskTitle" name="title" type="text" maxlength="50" placeholder="Enter task title" required>
+            <small class="hint">Required · maximum 50 characters</small>
+          </div>
+
+          <div class="field-group">
+            <label for="taskDescription">Description (optional)</label>
+            <textarea id="taskDescription" name="description" rows="3" placeholder="Add more details about the task"></textarea>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group compact-field">
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority" name="priority">
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+
+            <div class="field-group compact-field">
+              <label for="sortTasks">Sort by</label>
+              <select id="sortTasks" name="sortTasks">
+                <option value="createdAt-desc">Newest first</option>
+                <option value="createdAt-asc">Oldest first</option>
+                <option value="priority-asc">Priority: High to Low</option>
+                <option value="priority-desc">Priority: Low to High</option>
+                <option value="title-asc">Title A-Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="submitButton" class="primary-btn">Add Task</button>
+            <button type="button" id="cancelEditButton" class="secondary-btn hidden">Cancel Edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel toolbar-panel">
+        <div class="search-box">
+          <label class="sr-only" for="searchTasks">Search tasks</label>
+          <input id="searchTasks" type="search" placeholder="Search by title or description">
+        </div>
+
+        <div class="filter-group" role="group" aria-label="Filter tasks">
+          <button type="button" class="filter-btn active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="active">Active</button>
+          <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+      </section>
+
+      <section class="panel stats-panel">
+        <div>
+          <span class="stat-label">Completed / Total</span>
+          <strong id="taskCounter">0 / 0</strong>
+        </div>
+        <div>
+          <span class="stat-label">Active tasks</span>
+          <strong id="activeCounter">0</strong>
+        </div>
+        <button type="button" id="exportButton" class="secondary-btn">Export JSON</button>
+      </section>
+
+      <section class="panel list-panel">
+        <div id="statusMessage" class="status-message" aria-live="polite"></div>
+        <ul id="taskList" class="task-list"></ul>
+        <div id="emptyState" class="empty-state">
+          <h2>No tasks found</h2>
+          <p>Add your first task or adjust the filters/search.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <template id="taskTemplate">
+    <li class="task-item">
+      <label class="checkbox-wrap">
+        <input type="checkbox" class="task-checkbox">
+        <span class="checkbox-ui"></span>
+      </label>
+      <div class="task-content">
+        <div class="task-header-row">
+          <h3 class="task-title"></h3>
+          <span class="priority-badge"></span>
+        </div>
+        <p class="task-description"></p>
+        <span class="task-date"></span>
+      </div>
+      <div class="task-actions">
+        <button type="button" class="icon-btn edit-btn">Edit</button>
+        <button type="button" class="icon-btn delete-btn">Delete</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
